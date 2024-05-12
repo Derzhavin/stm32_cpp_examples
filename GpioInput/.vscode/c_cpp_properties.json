@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "vscode_stm32_c_cpp_properties",
+            "compilerPath": "/home/denis/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gcc",
+            "includePath": [
+                "${workspaceRoot}/thirdparty/CMSIS_5/CMSIS/Core/Include",
+                "${workspaceRoot}/thirdparty/CMSIS_5/Device/ARM/ARMCM4/Include",
+                "${workspaceFolder}/device"
+            ],
+            "defines": [
+                "STM32F446xx"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}
