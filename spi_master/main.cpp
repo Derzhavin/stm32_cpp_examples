@@ -195,8 +195,8 @@ int main(int, char* argv[]){
     switch(HAL_SPI_Transmit(&SpiHandle, (uint8_t*)aTxBuffer, BUFFERSIZE, 5000))
     {
     case HAL_OK:
-      HAL_Delay(250);
       HAL_GPIO_WritePin(SPIx_NSS_GPIO_PORT, SPIx_NSS_PIN, GPIO_PIN_SET);
+      HAL_Delay(250);
       break;  
       
     case HAL_TIMEOUT:
