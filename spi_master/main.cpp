@@ -29,7 +29,7 @@ extern "C"
 #define SPIx_NSS_PIN GPIO_PIN_1
 #define SPIx_NSS_GPIO_PORT GPIOB
 
-#define BUFFERSIZE                       (COUNTOF(aTxBuffer) - 1)
+#define BUFFERSIZE                       (COUNTOF(aTxBuffer))
 
 #define COUNTOF(__BUFFER__)   (sizeof(__BUFFER__) / sizeof(*(__BUFFER__)))
 
@@ -37,7 +37,7 @@ extern "C"
 
 SPI_HandleTypeDef SpiHandle;
 
-uint8_t aTxBuffer[] = "Aloha from STM32!";
+uint8_t aTxBuffer[] = {0x0A, 0x0B, 0x0C, 0x0D, 0x0E};
 
 uint8_t aRxBuffer[BUFFERSIZE];
 
@@ -196,7 +196,7 @@ int main(int, char* argv[]){
     {
     case HAL_OK:
       HAL_GPIO_WritePin(SPIx_NSS_GPIO_PORT, SPIx_NSS_PIN, GPIO_PIN_SET);
-      HAL_Delay(250);
+      HAL_Delay(100);
       break;  
       
     case HAL_TIMEOUT:
