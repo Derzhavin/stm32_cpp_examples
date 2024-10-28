@@ -1,0 +1,21 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Cortex Debug",
+            "cwd": "${workspaceFolder}",
+            "executable": "./build/usart_hal",
+            "request": "launch",
+            "type": "cortex-debug",
+"runToEntryPoint": "main",
+            "servertype": "openocd",
+            "gdbPath": "/home/denis/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb",
+            "configFiles": [
+                "openocd/stm32f4x.cfg"
+            ]
+        }
+    ]
+}

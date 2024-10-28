@@ -7,14 +7,14 @@ project(i2c_master VERSION 0.1.0 LANGUAGES C CXX ASM)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
 set(STM32_HAL_DRIVERS 
-    ${CMAKE_SOURCE_DIR}/stm32f4xx_hal_driver/Src/stm32f4xx_hal.c 
-    ${CMAKE_SOURCE_DIR}/stm32f4xx_hal_driver/Src/stm32f4xx_hal_i2c.c 
-    ${CMAKE_SOURCE_DIR}/stm32f4xx_hal_driver/Src/stm32f4xx_hal_i2c_ex.c 
-    ${CMAKE_SOURCE_DIR}/stm32f4xx_hal_driver/Src/stm32f4xx_hal_rcc.c 
-    ${CMAKE_SOURCE_DIR}/stm32f4xx_hal_driver/Src/stm32f4xx_hal_dma.c 
-    ${CMAKE_SOURCE_DIR}/stm32f4xx_hal_driver/Src/stm32f4xx_hal_cortex.c 
-    ${CMAKE_SOURCE_DIR}/stm32f4xx_hal_driver/Src/stm32f4xx_hal_gpio.c 
-    ${CMAKE_SOURCE_DIR}/stm32f4xx_hal_driver/Src/stm32f4xx_hal_pwr_ex.c 
+    ${CMAKE_SOURCE_DIR}/../STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c 
+    ${CMAKE_SOURCE_DIR}/../STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c 
+    ${CMAKE_SOURCE_DIR}/../STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c 
+    ${CMAKE_SOURCE_DIR}/../STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c 
+    ${CMAKE_SOURCE_DIR}/../STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c 
+    ${CMAKE_SOURCE_DIR}/../STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c 
+    ${CMAKE_SOURCE_DIR}/../STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c 
+    ${CMAKE_SOURCE_DIR}/../STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c 
 )
 
 message(${STM32_HAL_DRIVERS})
@@ -27,17 +27,17 @@ set(LINKER_FILE ${CMAKE_SOURCE_DIR}/stm32f446re.ld)
 add_executable(${PROJECT_NAME} 
     main.cpp 
     ${STM32_HAL_DRIVERS}
-    CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
-    CMSIS/Device/ST/STM32F4xx/Source/Templates/gcc/startup_stm32f446xx.s
+    ${CMAKE_SOURCE_DIR}/../CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
+    ${CMAKE_SOURCE_DIR}/../CMSIS/Device/ST/STM32F4xx/Source/Templates/gcc/startup_stm32f446xx.s
 )
 
 target_include_directories(${PROJECT_NAME} 
     PUBLIC
     ${CMAKE_SOURCE_DIR}
-    stm32f4xx_hal_driver/Inc
-    stm32f4xx_hal_driver/Inc/Legacy
-    CMSIS/Device/ST/STM32F4xx/Include/
-    CMSIS/Core/Include/
+    ${CMAKE_SOURCE_DIR}/../STM32F4xx_HAL_Driver/Inc
+    ${CMAKE_SOURCE_DIR}/../STM32F4xx_HAL_Driver/Inc/Legacy
+    ${CMAKE_SOURCE_DIR}/../CMSIS/Device/ST/STM32F4xx/Include/
+    ${CMAKE_SOURCE_DIR}/../CMSIS/Core/Include/
 )
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE

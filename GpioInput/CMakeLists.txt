@@ -17,21 +17,30 @@ file(GLOB_RECURSE SOURCES
     src/*.c
     src/*.cpp 
     src/*.s
-
-    device/*.c
-    device/*.cpp 
-    device/*.s
 )
 
-add_subdirectory(thirdparty)
+set(STM32_HAL_DRIVERS 
+    ${CMAKE_SOURCE_DIR}/../STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c 
+    ${CMAKE_SOURCE_DIR}/../STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c 
+    ${CMAKE_SOURCE_DIR}/../STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c 
+    ${CMAKE_SOURCE_DIR}/../STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c 
+)
 
-add_executable(${EXECUTABLE} ${SOURCES})
+add_executable(	
+    ${EXECUTABLE}
+    ${SOURCES}
+    ${STM32_HAL_DRIVERS}
+    ${CMAKE_SOURCE_DIR}/../CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
+    ${CMAKE_SOURCE_DIR}/../CMSIS/Device/ST/STM32F4xx/Source/Templates/gcc/startup_stm32f446xx.s
+)
 
 target_include_directories(${EXECUTABLE} PRIVATE
     device
-)
-target_link_libraries(${EXECUTABLE} PRIVATE
-    thirdparty::cmsis_5_core_m
+    ${CMAKE_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/../STM32F4xx_HAL_Driver/Inc
+    ${CMAKE_SOURCE_DIR}/../STM32F4xx_HAL_Driver/Inc/Legacy
+    ${CMAKE_SOURCE_DIR}/../CMSIS/Device/ST/STM32F4xx/Include/
+    ${CMAKE_SOURCE_DIR}/../CMSIS/Core/Include/
 )
 
 target_compile_definitions(${EXECUTABLE} PRIVATE
