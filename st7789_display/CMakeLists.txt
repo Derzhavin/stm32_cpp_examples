@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.15.0)
 
+
 set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/toolchains/toolchain-arm-none-eabi.cmake)
 
 project(usart_hal VERSION 0.1.0 LANGUAGES C CXX ASM)
